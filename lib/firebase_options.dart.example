@@ -1,0 +1,78 @@
+import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
+import 'package:flutter/foundation.dart'
+    show defaultTargetPlatform, kIsWeb, TargetPlatform;
+
+class DefaultFirebaseOptions {
+  static FirebaseOptions get currentPlatform {
+    if (kIsWeb) {
+      return web;
+    }
+    switch (defaultTargetPlatform) {
+      case TargetPlatform.android:
+        return android;
+      case TargetPlatform.iOS:
+        return ios;
+      case TargetPlatform.macOS:
+        return macos;
+      case TargetPlatform.windows:
+        return windows;
+      case TargetPlatform.linux:
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for linux - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
+      default:
+        throw UnsupportedError(
+          'DefaultFirebaseOptions are not supported for this platform.',
+        );
+    }
+  }
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'DUMMY_WEB_API_KEY',
+    appId: 'DUMMY_WEB_APP_ID',
+    messagingSenderId: 'DUMMY_WEB_MSG_SENDER_ID',
+    projectId: 'DUMMY_WEB_PROJECT_ID',
+    authDomain: 'DUMMY_WEB_AUTH_DOMAIN',
+    storageBucket: 'DUMMY_WEB_STORAGE_BUCKET',
+    measurementId: 'DUMMY_WEB_MEASUREMENT_ID',
+  );
+
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'DUMMY_ANDROID_API_KEY',
+    appId: 'DUMMY_ANDROID_APP_ID',
+    messagingSenderId: 'DUMMY_ANDROID_MSG_SENDER_ID',
+    projectId: 'DUMMY_ANDROID_PROJECT_ID',
+    storageBucket: 'DUMMY_ANDROID_STORAGE_BUCKET',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'DUMMY_IOS_API_KEY',
+    appId: 'DUMMY_IOS_APP_ID',
+    messagingSenderId: 'DUMMY_IOS_MSG_SENDER_ID',
+    projectId: 'DUMMY_IOS_PROJECT_ID',
+    storageBucket: 'DUMMY_IOS_STORAGE_BUCKET',
+    iosClientId: 'DUMMY_IOS_CLIENT_ID',
+    iosBundleId: 'DUMMY_IOS_BUNDLE_ID',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'DUMMY_MACOS_API_KEY',
+    appId: 'DUMMY_MACOS_APP_ID',
+    messagingSenderId: 'DUMMY_MACOS_MSG_SENDER_ID',
+    projectId: 'DUMMY_MACOS_PROJECT_ID',
+    storageBucket: 'DUMMY_MACOS_STORAGE_BUCKET',
+    iosClientId: 'DUMMY_MACOS_CLIENT_ID',
+    iosBundleId: 'DUMMY_MACOS_BUNDLE_ID',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'DUMMY_WINDOWS_API_KEY',
+    appId: 'DUMMY_WINDOWS_APP_ID',
+    messagingSenderId: 'DUMMY_WINDOWS_MSG_SENDER_ID',
+    projectId: 'DUMMY_WINDOWS_PROJECT_ID',
+    authDomain: 'DUMMY_WINDOWS_AUTH_DOMAIN',
+    storageBucket: 'DUMMY_WINDOWS_STORAGE_BUCKET',
+    measurementId: 'DUMMY_WINDOWS_MEASUREMENT_ID',
+  );
+} 
